@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+set -e 
+
+VERSION=${1:-0.10.9}
+SCRIPTS_DIR=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
+INSTALL_DIR="$SCRIPTS_DIR/../e2e-tests/.logseq-installation"
+
+wget "https://github.com/logseq/logseq/releases/download/${VERSION}/Logseq-linux-x64-${VERSION}.zip" -O/tmp/logseq.zip
+rm -rf "$INSTALL_DIR"
+mkdir "$INSTALL_DIR"
+unzip /tmp/logseq.zip -d "$INSTALL_DIR"
+mv "${INSTALL_DIR}"/Logseq-linux-x64/* "${INSTALL_DIR}"
+rmdir "${INSTALL_DIR}/Logseq-linux-x64"
