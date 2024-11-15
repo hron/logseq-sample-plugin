@@ -60,13 +60,11 @@ base.beforeAll(async () => {
   });
 
   electronApp = await electron.launch({
-    // cwd: "/home/algus/Downloads/Logseq-linux-x64-0.10.9/Logseq-linux-x64/resources/app",
     cwd: path.resolve(
       __dirname,
       "../e2e-tests/.logseq-installation/resources/app"
     ),
     args: ["electron.js"],
-    // executablePath: "/home/algus/bin/Logseq-0.10.10-algus.AppImage",
     locale: "en",
     timeout: 10_000, // should be enough for the app to start
   });
@@ -331,9 +329,9 @@ let getTracingFilePath = function (): string {
   return `e2e-dump/trace-${Date.now()}.zip.dump`;
 };
 
-// test.afterAll(async () => {
-//   await context.tracing.stopChunk({ path: getTracingFilePath() });
-// });
+test.afterAll(async () => {
+  await context.tracing.stopChunk({ path: getTracingFilePath() });
+});
 
 /**
  * Trace all tests in a file
