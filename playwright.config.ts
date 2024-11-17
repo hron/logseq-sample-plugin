@@ -1,9 +1,9 @@
-import { PlaywrightTestConfig } from "@playwright/test";
+import { PlaywrightTestConfig } from '@playwright/test'
 
 const config: PlaywrightTestConfig = {
   // The directory where the tests are located
   // The order of the tests is determined by the file names alphabetically.
-  testDir: "./e2e-tests",
+  testDir: './e2e-tests',
 
   // The number of retries before marking a test as failed.
   maxFailures: 1,
@@ -14,15 +14,15 @@ const config: PlaywrightTestConfig = {
 
   // 'github' for GitHub Actions CI to generate annotations, plus a concise 'dot'.
   // default 'list' when running locally.
-  reporter: process.env.CI ? "github" : "list",
+  reporter: process.env.CI ? 'github' : 'list',
 
   // Fail the build on CI if test.only is present.
   forbidOnly: !!process.env.CI,
 
   use: {
     // SCapture screenshot after each test failure.
-    screenshot: "only-on-failure",
+    screenshot: 'only-on-failure',
   },
-};
+}
 
-export default config;
+export default config
