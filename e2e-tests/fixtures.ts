@@ -22,12 +22,13 @@ let page: Page;
 // For testing special characters in graph name / path
 let repoName = "@" + randomString(10);
 let testTmpDir = path.resolve(__dirname, "../tmp");
+let testGraphDir = path.resolve(testTmpDir, './logseqGraph')
 
-if (fs.existsSync(testTmpDir)) {
-  fs.rmSync(testTmpDir, { recursive: true });
+if (fs.existsSync(testGraphDir)) {
+  fs.rmSync(testGraphDir, { recursive: true })
 }
 
-export let graphDir = path.resolve(testTmpDir, "#e2e-test", repoName);
+export let graphDir = path.resolve(testGraphDir, '#e2e-test', repoName)
 
 // NOTE: This following is a console log watcher for error logs.
 // Save and print all logs when error happens.
@@ -60,14 +61,16 @@ base.beforeAll(async () => {
   });
 
   electronApp = await electron.launch({
-    cwd: path.resolve(
-      __dirname,
-      "../e2e-tests/.logseq-installation/resources/app"
-    ),
-    args: ["electron.js"],
-    locale: "en",
+    cwd: path.resolve(testTmpDir, 'user-home/release/resources/app'),
+    args: ['electron.js'],
+    env: {
+      ...process.env,
+      HOME: `${testTmpDir}/user-home`,
+      XDG_CONFIG_HOME: `${testTmpDir}/user-home/.config`,
+    },
+    locale: 'en',
     timeout: 10_000, // should be enough for the app to start
-  });
+  })
   context = electronApp.context();
   await context.tracing.start({ screenshots: true, snapshots: true });
   await context.tracing.startChunk();
