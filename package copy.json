@@ -1,7 +1,7 @@
 {
-  "name": "logseq-sample-plugin",
-  "version": "0.0.1",
-  "description": "A sample plugin for logseq",
+  "name": "logseq-cycle-todo-dwim",
+  "version": "1.0.0",
+  "description": "Ctrl+Enter with repeating timestamp support, similar to org-mode",
   "author": "Aleksei Gusev <aleksei.gusev@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -36,12 +36,13 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.15.0"
   },
-  "dependencies": {
-    "@logseq/libs": "^0.2.0"
-  },
   "logseq": {
     "main": "dist/index.html",
-    "icon": "./logo.png",
-    "id": "sample-plugin"
+    "icon": "./logo.webp",
+    "id": "cycle-todo-dwim"
+  },
+  "dependencies": {
+    "@logseq/libs": "^0.2.0",
+    "luxon": "^3.5.0"
   }
 }

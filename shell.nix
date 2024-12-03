@@ -4,8 +4,7 @@ with pkgs; mkShell {
   name = "logseq-sample-plugin";
 
   buildInputs = [
-    nodejs_20
+    nodejs_18
     yarn
-    bashInteractive
   ];
 }
